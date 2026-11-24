@@ -117,7 +117,7 @@ that reflect the actual definition of the label.
 
 ## Code
 
-Public repository/notebook link: `TBD - publish this repository before submitting the form`.
+Public repository link: https://github.com/kvvy6789/ML_Competitions/tree/master/Detecting%20Premature%20Problem%20Solving%20in%20Counseling%20Responses
 
 The code for this task is in `src/run_experiments.py` and
 `src/make_submission.py`. Exact commands are listed in `README.md`. The stable

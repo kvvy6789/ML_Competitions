@@ -40,7 +40,7 @@ The domain-only Ridge model worked best on the repeated dev folds, but its RMSE 
 
 ## Code
 
-Public repository link: `TBD`.
+Public repository link: https://github.com/kvvy6789/ML_Competitions/tree/master/What%20Makes%20a%20Title%20Interesting
 
 The code for this task is under `What Makes a Title Interesting/`. Run:
 
