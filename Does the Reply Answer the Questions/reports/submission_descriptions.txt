@@ -1,0 +1,4 @@
+run1: engineered coverage features + balanced logistic regression, C=0.1, dev accuracy 1.000 (n=4)
+run2: engineered coverage features + shallow random forest, dev accuracy 1.000 (n=4)
+run3: reply-only word/bigram TF-IDF + balanced logistic regression, C=0.1, dev accuracy 0.750
+

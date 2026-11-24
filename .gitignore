@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Competition text is restricted to course use and must not be redistributed.
+Detecting Premature Problem Solving in Counseling Responses/data/
+Does the Reply Answer the Questions/data/
+What Makes a Title Interesting/data/
+
+# Generated local experiment artifacts and Kaggle submissions.
+Detecting Premature Problem Solving in Counseling Responses/artifacts/
+Does the Reply Answer the Questions/artifacts/
+What Makes a Title Interesting/artifacts/
+
