@@ -85,12 +85,10 @@ their order match `sample_submission.csv`.
 
 ## Runs
 
-The rows below list the prepared runs. Keep the runs you submitted and enter their Kaggle public scores.
+I submitted one entry. Kaggle listed me in 4th place on the public leaderboard with a score of 0.49760.
 
 ```text
-run1 | Response-only TF-IDF Logistic Regression (C=2) | macro-F1 0.722; accuracy 0.733 | TBD
-run2 | Opening-emphasis TF-IDF Logistic Regression (C=5) | macro-F1 0.683; accuracy 0.700 | TBD
-run3 | Combined-text TF-IDF Logistic Regression (C=10) | macro-F1 0.683; accuracy 0.700 | TBD
+run1 | Response-only TF-IDF Logistic Regression (C=2) | macro-F1 0.722, accuracy 0.733 | 0.49760
 ```
 
 Host baseline score(s): `TBD - copy from the competition Overview/Leaderboard`.
