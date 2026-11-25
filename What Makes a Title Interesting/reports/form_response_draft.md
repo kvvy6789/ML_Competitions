@@ -24,12 +24,12 @@ I kept every attempted configuration in `experiment_summary.csv`, including mode
 
 ## Runs
 
-The rows below list the prepared runs. Keep the runs you submitted and enter their Kaggle public scores.
+I submitted three runs. The Kaggle leaderboard showed my team in 9th place with a score of 0.79959 from run2.
 
 ```text
-run1 | Domain-only one-hot Ridge, alpha=10 | dev RMSE 1.6742, MAE 1.4667 | TBD
-run2 | Word unigram/bigram TF-IDF + Ridge, alpha=10 | dev RMSE 1.6783, MAE 1.4650 | TBD
-run3 | Word TF-IDF + 20D SVD + trained 16-unit MLP | dev RMSE 2.0056, MAE 1.6370 | TBD
+run1 | Domain-only one-hot Ridge, alpha=10 | dev RMSE 1.6742, MAE 1.4667 | 0.86855
+run2 | Word unigram/bigram TF-IDF + Ridge, alpha=10 | dev RMSE 1.6783, MAE 1.4650 | 0.79959
+run3 | Word TF-IDF + 20D SVD + trained 16-unit MLP | dev RMSE 2.0056, MAE 1.6370 | 1.05186
 ```
 
 Host baseline score(s): `TBD`.
