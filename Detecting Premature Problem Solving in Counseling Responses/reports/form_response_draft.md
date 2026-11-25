@@ -2,11 +2,7 @@
 
 ## Task
 
-The task was to classify a paired counseling context and response as either
-premature problem-solving (`1`) or not premature (`0`). The important distinction
-was not whether a response contained advice, but whether it introduced advice,
-instructions, diagnosis, treatment, or other solution-directed guidance before
-adequately acknowledging the emotional concern in the context.
+I predicted whether a counseling response jumped into solving the problem too soon. For each context and response pair, I used label `1` if the response offered advice or other guidance before adequately acknowledging the person's feelings, and label `0` otherwise.
 
 ## Methodology
 
@@ -82,15 +78,14 @@ so I documented the experiment but did not select it for a leaderboard run.
 
 Hyperparameters were compared primarily using five-fold stratified
 cross-validation on the training partition. The official validation set was
-then used for final approach comparisons and run selection. After freezing a
-run configuration, I refit it on all 150 labeled examples and generated exactly
+then used for final approach comparisons and run selection. Once I settled on the settings for a run,
+I trained it again on all 150 labeled examples and generated exactly
 one binary prediction for each test ID. The code checks that output IDs and
 their order match `sample_submission.csv`.
 
 ## Runs
 
-Replace each `TBD` after Kaggle reports the score. Include only runs actually
-submitted.
+The rows below list the prepared runs. Keep the runs you submitted and enter their Kaggle public scores.
 
 ```text
 run1 | Response-only TF-IDF Logistic Regression (C=2) | macro-F1 0.722; accuracy 0.733 | TBD
@@ -102,18 +97,7 @@ Host baseline score(s): `TBD - copy from the competition Overview/Leaderboard`.
 
 ## Reflection
 
-The response-only logistic-regression approach worked best on my validation
-set. This result makes sense because the label is defined by what the response
-does and when it does it, while the context mainly supplies the emotional issue.
-Including the context added many topic words that could be predictive by chance
-in a small dataset but did not consistently help identify the target response
-behavior. Word bigrams were useful because acknowledgment and directive language
-often appears in short phrases. The experiment also showed that a more complex
-model is not automatically better: the trained MLP was substantially less
-stable than sparse linear classifiers with only 120 training examples. The most
-important lessons were to preserve a genuinely held-out validation set, compare
-against a majority baseline, use class-sensitive metrics, and design text views
-that reflect the actual definition of the label.
+Reading just the response gave me the best validation result. I think this worked because short phrases in the reply can show when the counselor switches from acknowledging feelings to giving advice. Adding the context also added topic words, which may have made it easier to pick up patterns that were specific to this small sample. The MLP scored lower than the simpler linear models. I found it helpful to compare macro-F1 alongside accuracy because the majority baseline got 60% accuracy while missing an entire class.
 
 ## Code
 

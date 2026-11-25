@@ -2,10 +2,7 @@
 
 ## Task
 
-This task asks whether a home-improvement reply covers every explicit request
-and material constraint in the question (`1`, Fully answered) or covers only
-part of the request (`0`, Partially answered). The judgment concerns request
-coverage rather than technical correctness, safety, politeness, or length.
+I predicted how fully a reply answered a home-improvement question. A reply got label `1` if it covered every request and important constraint, or label `0` if it left something important unanswered. The label measured coverage regardless of whether the advice was correct, safe, or polite.
 
 ## Methodology
 
@@ -64,21 +61,19 @@ classified all four validation examples correctly but had only 0.333 train-only
 cross-validation accuracy. It became `run2` as a structurally different model,
 not because four validation examples prove it is superior.
 
-**TF-IDF SVD + Trained MLP.** To satisfy the trained neural-network requirement,
-I reduced TF-IDF to six dense SVD dimensions, standardized them, and trained MLP
+**TF-IDF SVD + Trained MLP.** For the neural-network comparison, I reduced TF-IDF to six dense SVD dimensions, standardized them, and trained MLP
 classifiers with hidden layers `(8)`, `(16)`, and `(16, 8)`, Adam optimization,
 L2 penalty 0.001, and a fixed seed. The best MLP produced majority-class
 validation predictions (0.750 accuracy and 0.429 macro-F1). I documented the
 neural approach but did not select it for a leaderboard run.
 
-After freezing each run, I refit its configuration on all 16 labeled examples
+Once I settled on the settings for each run, I trained it again on all 16 labeled examples
 and generated one numeric prediction for each of the eight test IDs. The code
 checks the sample-submission ID order and restricts labels to 0 or 1.
 
 ## Runs
 
-Replace `TBD` after Kaggle scores each submitted file. Include only files
-actually submitted.
+The rows below list the prepared runs. Keep the runs you submitted and enter their Kaggle public scores.
 
 ```text
 run1 | Engineered Coverage Logistic Regression, C=0.1 | validation accuracy 1.000, macro-F1 1.000 | TBD
@@ -90,17 +85,7 @@ Host baseline score(s): `TBD`.
 
 ## Reflection
 
-The engineered coverage models worked best on the supplied validation set.
-Their features align with the task: questions containing several explicit
-requests are harder to cover completely, while reply length, overlap, and
-answer-language indicators approximate how much of the request is addressed.
-Sparse lexical models were unable to learn reliable distinctions from only 12
-training examples and mostly reproduced the majority class. The main lesson is
-that accuracy is misleading on this validation set: predicting Fully answered
-for everything already earns 75%. Macro-F1 and confusion matrices exposed that
-failure. The perfect engineered-model validation score must also be treated
-cautiously because it is based on only four items and conflicts with weak
-cross-validation performance.
+The two models built around coverage features got all four validation examples right. Counts and word overlap gave the models a way to look at both sides of the exchange. For example, a question with several requests may need a reply that addresses several distinct points. I’d be cautious about the result because both models did much worse in cross-validation on the 12 training examples. I also learned how easy it was to overread accuracy here. Predicting Fully answered every time got three out of four examples right, yet missed the only Partially answered example.
 
 ## Code
 

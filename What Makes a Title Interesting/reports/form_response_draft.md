@@ -2,7 +2,7 @@
 
 ## Task
 
-This task predicts an interest score from 1 through 6 for each content title. The supplied records also identify the source domain: article, podcast, Reddit, or YouTube. This is an ordinal regression problem, so I evaluated predictions using error magnitude rather than treating all mistakes as equally different.
+I predicted how interesting readers would find a title on a scale from 1 to 6. Each title came from an article, a podcast, Reddit, or YouTube. I measured how far each prediction was from the actual score so that missing by one point counted less than missing by several.
 
 ## Methodology
 
@@ -18,13 +18,13 @@ Because no separate validation file was supplied, I created my own dev evaluatio
 
 **Character TF-IDF Ridge Regression.** I also tried character 3-5-grams within word boundaries, both alone and combined with word TF-IDF. Character features can capture style, punctuation, capitalization patterns, and word fragments, but they did not clearly beat the baseline on this small dataset.
 
-**TF-IDF/SVD Trained Neural Regressor.** To test a trained neural-network approach without creating an unmanageably sparse neural input, I transformed word unigram/bigram TF-IDF into 20 dense dimensions using Truncated SVD, standardized the dimensions, and trained MLP regressors. I compared one hidden layer with 16 units against hidden layers of 32 and 16 units. Both used ReLU, Adam, L2 regularization `alpha=0.01`, learning rate 0.003, early stopping, and a maximum of 1,500 iterations. The smaller network achieved dev RMSE 2.0056 and MAE 1.6370 and became `run3`. The deeper model was slightly worse at RMSE 2.0184. These results show that the small dataset did not support the additional neural flexibility.
+**TF-IDF/SVD Trained Neural Regressor.** For the neural models, I used a smaller input representation. I transformed word unigram/bigram TF-IDF into 20 dense dimensions using Truncated SVD, standardized the dimensions, and trained MLP regressors. I compared one hidden layer with 16 units against hidden layers of 32 and 16 units. Both used ReLU, Adam, L2 regularization `alpha=0.01`, learning rate 0.003, early stopping, and a maximum of 1,500 iterations. The smaller network achieved dev RMSE 2.0056 and MAE 1.6370 and became `run3`. The deeper model was slightly worse at RMSE 2.0184. These results show that the small dataset did not support the additional neural flexibility.
 
 I kept every attempted configuration in `experiment_summary.csv`, including models not selected for a leaderboard submission. The run manifest records the exact approach, seed, dev RMSE, dev MAE, and output filename for each selected run. The code validates column names, test-ID order, missing predictions, and the 1-6 range against the supplied sample submission.
 
 ## Runs
 
-Replace `TBD` after Kaggle scores each submitted file. Include only files actually submitted.
+The rows below list the prepared runs. Keep the runs you submitted and enter their Kaggle public scores.
 
 ```text
 run1 | Domain-only one-hot Ridge, alpha=10 | dev RMSE 1.6742, MAE 1.4667 | TBD
@@ -36,7 +36,7 @@ Host baseline score(s): `TBD`.
 
 ## Reflection
 
-The domain-only Ridge model worked best on the repeated dev folds, but its RMSE advantage over the global mean was only 0.0036. I therefore do not interpret it as decisive evidence that domain generalizes. The word TF-IDF model nearly matched the baseline and had slightly better MAE, suggesting that title words may help some cases while hurting others. With only 120 examples and highly diverse titles, lexical features are sparse and many phrases appear only once. The neural models performed much worse, which indicates that the 20-dimensional latent representation and extra nonlinear parameters introduced variance that the small dataset could not support. The main lesson is to use strong regularization, compare against a mean baseline, repeat validation splits, and avoid assuming that a more flexible text model will perform better. This reflection should be extended after leaderboard scores are available.
+The Ridge model that used only the source category had the lowest dev RMSE. It beat the global average by just 0.0036, so I’d be cautious about expecting that improvement on new titles. The word model came close and had a slightly lower MAE. With 120 titles on different topics, many phrases appeared only once, which may explain why the text models struggled. Both neural models scored worse. Comparing them with the global average showed me how little extra benefit the title features provided on these splits.
 
 ## Code
 
