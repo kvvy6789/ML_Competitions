@@ -91,8 +91,6 @@ I submitted one entry. Kaggle listed me in 4th place on the public leaderboard w
 run1 | Response-only TF-IDF Logistic Regression (C=2) | macro-F1 0.722, accuracy 0.733 | 0.49760
 ```
 
-Host baseline score(s): `TBD - copy from the competition Overview/Leaderboard`.
-
 ## Reflection
 
 Reading just the response gave me the best validation result. I think this worked because short phrases in the reply can show when the counselor switches from acknowledging feelings to giving advice. Adding the context also added topic words, which may have made it easier to pick up patterns that were specific to this small sample. The MLP scored lower than the simpler linear models. I found it helpful to compare macro-F1 alongside accuracy because the majority baseline got 60% accuracy while missing an entire class.

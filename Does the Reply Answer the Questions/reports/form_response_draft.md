@@ -81,8 +81,6 @@ run2 | Engineered Coverage Random Forest | validation accuracy 1.000, macro-F1 1
 run3 | Reply-only TF-IDF Logistic Regression, C=0.1 | validation accuracy 0.750, macro-F1 0.429 | 0.33333
 ```
 
-Host baseline score(s): `TBD`.
-
 ## Reflection
 
 The two models built around coverage features got all four validation examples right. Counts and word overlap gave the models a way to look at both sides of the exchange. For example, a question with several requests may need a reply that addresses several distinct points. I’d be cautious about the result because both models did much worse in cross-validation on the 12 training examples. I also learned how easy it was to overread accuracy here. Predicting Fully answered every time got three out of four examples right, yet missed the only Partially answered example.

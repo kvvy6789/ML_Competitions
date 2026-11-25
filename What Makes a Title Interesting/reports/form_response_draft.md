@@ -32,8 +32,6 @@ run2 | Word unigram/bigram TF-IDF + Ridge, alpha=10 | dev RMSE 1.6783, MAE 1.465
 run3 | Word TF-IDF + 20D SVD + trained 16-unit MLP | dev RMSE 2.0056, MAE 1.6370 | 1.05186
 ```
 
-Host baseline score(s): `TBD`.
-
 ## Reflection
 
 The Ridge model that used only the source category had the lowest dev RMSE. It beat the global average by just 0.0036, so I’d be cautious about expecting that improvement on new titles. The word model came close and had a slightly lower MAE. With 120 titles on different topics, many phrases appeared only once, which may explain why the text models struggled. Both neural models scored worse. Comparing them with the global average showed me how little extra benefit the title features provided on these splits.
