@@ -73,12 +73,12 @@ checks the sample-submission ID order and restricts labels to 0 or 1.
 
 ## Runs
 
-The rows below list the prepared runs. Keep the runs you submitted and enter their Kaggle public scores.
+I submitted three entries. The public leaderboard listed my team in 4th place with a best score of 0.73333, tied on score with the three teams above me. My latest submission scored 0.33333.
 
 ```text
-run1 | Engineered Coverage Logistic Regression, C=0.1 | validation accuracy 1.000, macro-F1 1.000 | TBD
-run2 | Engineered Coverage Random Forest | validation accuracy 1.000, macro-F1 1.000 | TBD
-run3 | Reply-only TF-IDF Logistic Regression, C=0.1 | validation accuracy 0.750, macro-F1 0.429 | TBD
+run1 | Engineered Coverage Logistic Regression, C=0.1 | validation accuracy 1.000, macro-F1 1.000 | 0.73333
+run2 | Engineered Coverage Random Forest | validation accuracy 1.000, macro-F1 1.000 | 0.50000
+run3 | Reply-only TF-IDF Logistic Regression, C=0.1 | validation accuracy 0.750, macro-F1 0.429 | 0.33333
 ```
 
 Host baseline score(s): `TBD`.
